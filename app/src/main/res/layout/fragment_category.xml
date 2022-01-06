@@ -7,10 +7,16 @@
     tools:context=".view.CategoryFragment"
     android:id="@+id/fragment_categories">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/category_recyclerview"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/search_item" />
+        android:id="@+id/category_swipeRL">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/category_recyclerview"
+            android:layout_width="match_parent"
+            android:layoutAnimation="@anim/layout_animation"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/search_item" />
 
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

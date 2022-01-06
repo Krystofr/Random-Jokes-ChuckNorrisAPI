@@ -14,17 +14,9 @@ import app.christopher.chucknorrisjokes.model.RandomJoke
 import app.christopher.chucknorrisjokes.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
 
-class SearchFragment : Fragment(), SearchRecyclerAdapter.OnItemClickedListener {
+class SearchFragment : Fragment(R.layout.fragment_search), SearchRecyclerAdapter.OnItemClickedListener {
 
     private lateinit var mainViewModel: MainViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,9 +48,23 @@ class SearchFragment : Fragment(), SearchRecyclerAdapter.OnItemClickedListener {
                 Toast.makeText(context, "Enter text to search", Toast.LENGTH_SHORT).show()
         }
 
+        search_swipeRL.apply {
+            setOnRefreshListener {
+                isRefreshing = true
+                swipeRefreshLayout()
+                isRefreshing = false
+            }
+        }
+
     }
 
     override fun onItemClick(randomJoke: RandomJoke) {
         //search item clicked
+    }
+
+    private fun swipeRefreshLayout() {
+        Toast.makeText(activity, "Refreshed", Toast.LENGTH_SHORT).show()
+        activity?.overridePendingTransition(R.anim.slide_in, R.anim.slide_in)
+        activity?.overridePendingTransition(R.anim.slide_in, R.anim.slide_in)
     }
 }

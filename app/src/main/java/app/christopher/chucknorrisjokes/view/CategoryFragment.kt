@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -59,6 +60,14 @@ class CategoryFragment : Fragment(), CategoriesRecyclerAdapter.OnItemClickedList
             }
             builder.show()
         }
+
+        category_swipeRL.apply {
+            setOnRefreshListener {
+                isRefreshing = true
+                swipeRefreshLayout()
+                isRefreshing = false
+            }
+        }
     }
 
     override fun onItemClick(category: String) {
@@ -66,4 +75,10 @@ class CategoryFragment : Fragment(), CategoriesRecyclerAdapter.OnItemClickedList
         mainViewModel.setCategory(category)
     }
 
+    private fun swipeRefreshLayout() {
+        Toast.makeText(activity, "Refreshed", Toast.LENGTH_SHORT).show()
+        activity?.overridePendingTransition(R.anim.slide_in, R.anim.slide_in)
+        activity?.overridePendingTransition(R.anim.slide_in, R.anim.slide_in)
+
+    }
 }
