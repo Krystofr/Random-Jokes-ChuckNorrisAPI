@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/dark_color4"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_search"
+    tools:context=".view.SearchFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/til_query"
+        app:layout_constraintEnd_toStartOf="@+id/btn_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"
+        app:boxBackgroundMode="outline"
+        android:textColorHint="@color/light_color3"
+        app:boxBackgroundColor="@color/dark_color1"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeColor="@color/light_color3"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Search joke..." >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_query"
+            android:layout_width="match_parent"
+            android:textColor="@color/light_color5"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        app:rippleColor="@color/purple_700"
+        android:backgroundTint="@color/dark_color3"
+        app:layout_constraintBottom_toBottomOf="@id/til_query"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:drawableLeft="@drawable/ic_search"
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintTop_toTopOf="@id/til_query" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchJokes"
+        tools:listitem="@layout/search_item"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_query" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
