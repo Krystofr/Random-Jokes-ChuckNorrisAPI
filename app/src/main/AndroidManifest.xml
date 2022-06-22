@@ -3,10 +3,10 @@
     package="app.christopher.chucknorrisjokes">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.NETWORK"/>
 
     <application
         android:allowBackup="true"
-        android:fullBackupContent="true"
         android:icon="@drawable/chuck_norris"
         android:label="@string/app_name"
         android:roundIcon="@drawable/chuck_norris"
